@@ -15,7 +15,7 @@ ids = results.map { |game| game["id"] }
 
 
 CONDITIONS = %w(Bad OK Good Mint)
-STATUS = %w(Pending Accepted Cancelled Past)
+STATUS = %w(Pending Accepted Rejected)
 
 puts "Cleaning DB"
 User.destroy_all
@@ -69,7 +69,7 @@ puts "Creating offers"
 15.times do
   Offer.create!({
     description: Faker::Quotes::Shakespeare.romeo_and_juliet_quote,
-    rate_per_day: (1..10).to_a.sample,
+    rate_per_day: (0..10).to_a.sample,
     condition: CONDITIONS.sample,
     game_id: ids.sample,
     user: User.all.sample
