@@ -286,6 +286,9 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    simple_form-tailwind (0.2.0)
+      railties (>= 7.0)
+      simple_form (>= 5.0)
     sprockets (4.2.2)
       concurrent-ruby (~> 1.0)
       logger
@@ -339,7 +342,6 @@ PLATFORMS
   arm-linux-musl
   arm64-darwin
   x86_64-darwin
-  x86_64-linux
   x86_64-linux-gnu
   x86_64-linux-musl
 
@@ -362,9 +364,11 @@ DEPENDENCIES
   sassc-rails
   selenium-webdriver
   simple_form!
+  simple_form-tailwind
   sprockets-rails
   stimulus-rails
-  tailwindcss-rails
+  tailwindcss-rails (~> 4.2)
+  tailwindcss-ruby (~> 4.1)
   turbo-rails
   tzinfo-data
   web-console
