@@ -16,7 +16,7 @@ response = Faraday.post("https://api.igdb.com/v4/games/") do |req|
   req.headers["Client-ID"] = ENV['CLIENT_ID']
   req.headers["Authorization"] = ENV['ACCESS_TOKEN']
 
-  req.body = 'search "Legend"; where platforms != null & genres != null; fields id, name, platforms, summary, genres, cover; limit 50;'
+  req.body = 'search "Legend"; where platforms != null & genres != null; fields id, name, platforms, summary, genres, cover.image_id ; limit 50;'
 end
 
 results = JSON.parse(response.body)
@@ -28,7 +28,7 @@ games.each do |game|
     platform: game['platforms'][0],
     overview: game['summary'],
     genre: game['genres'][0],
-    artwork_url: "https://images.igdb.com/igdb/image/upload/t_1080p/#{game['cover']}.jpg"
+    artwork_url: "https://images.igdb.com/igdb/image/upload/t_1080p/#{game['cover']['image_id']}.jpg"
   })
 end
 
