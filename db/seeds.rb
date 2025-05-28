@@ -116,7 +116,7 @@ puts "Creating offers"
     description: Faker::Quotes::Shakespeare.romeo_and_juliet_quote,
     rate_per_day: (0..10).to_a.sample,
     condition: CONDITIONS.sample,
-    game_id: Game.pluck(:id).sample,
+    game: Game.all.sample,
     user: User.all.sample
   })
 end
