@@ -1,4 +1,5 @@
 class Offer < ApplicationRecord
+  has_one_attached :photo
   belongs_to :user
   belongs_to :game
   has_many :bookings, dependent: :destroy
