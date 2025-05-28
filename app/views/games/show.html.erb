@@ -1,0 +1,92 @@
+
+<div class="container">
+  <div class="grid grid-cols-2 gap-2 p-4">
+          <div class="card bg-base-200 w-110 h-[900px] border border-[#DC602E] shadow-sm ml-20">
+            <figure class="px-10 pt-10">
+              <%= image_tag(@game.artwork_url,
+                  width: 400, height: 300, crop: :fill) %>
+            </figure>
+            <div class="card-body items-center text-center">
+              <h2 class="card-title text-[#DC602E]"><%= @game.title %></h2>
+              <p class="text-[#05A8AA]"><%= @game.overview %></p>
+              <p class="font-bold text-[#DC602E]"><%= @game.platform %></p>
+            </div>
+          </div>
+          <div>
+      <ul class="list bg-base-100 rounded-box shadow-md">
+        <li class="p-4 pb-2 text-xl text-[#DC602E] text-center underline font-bold opacity-60 tracking-wide mb-5">Les offres :</li>
+
+          <li class="list-row bg-base-200 border border-[#DC602E] mb-5">
+            <div class="size-10 rounded-box"><%= image_tag(@game.artwork_url)%></div>
+            <div>
+              <div class="card-title text-[#DC602E]"><%= @game.title %></div>
+              <div class="text-s text-[#627C85] text-shadow-md/10 uppercase font-semibold opacity-60">User1</div>
+            </div>
+            <p class="list-col-wrap text-xs text-[#05A8AA]">
+              "Remaining Reason" became an instant hit, praised for its haunting sound and emotional depth. A viral performance brought it widespread recognition, making it one of Dio Lupa’s most iconic tracks.
+            </p>
+            <button class="btn btn-outline btn-warning">Réserver</button>
+          </li>
+
+          <li class="list-row bg-base-200 border border-[#DC602E] mb-5">
+            <div class="size-10 rounded-box"><%= image_tag(@game.artwork_url)%></div>
+            <div>
+              <div class="card-title text-[#DC602E]"><%= @game.title %></div>
+              <div class="text-s text-[#627C85] text-shadow-md/10 uppercase font-semibold opacity-60">User2</div>
+            </div>
+            <p class="list-col-wrap text-xs text-[#05A8AA]">
+              "Remaining Reason" became an instant hit, praised for its haunting sound and emotional depth. A viral performance brought it widespread recognition, making it one of Dio Lupa’s most iconic tracks.
+            </p>
+            <button class="btn btn-outline btn-warning">Réserver</button>
+          </li>
+
+          <li class="list-row bg-base-200 border border-[#DC602E] mb-5">
+            <div class="size-10 rounded-box"><%= image_tag(@game.artwork_url)%></div>
+            <div>
+              <div class="card-title text-[#DC602E]"><%= @game.title %></div>
+              <div class="text-s text-[#627C85] text-shadow-md/10 uppercase font-semibold opacity-60">User3</div>
+            </div>
+            <p class="list-col-wrap text-xs text-[#05A8AA]">
+              "Remaining Reason" became an instant hit, praised for its haunting sound and emotional depth. A viral performance brought it widespread recognition, making it one of Dio Lupa’s most iconic tracks.
+            </p>
+            <button class="btn btn-outline btn-warning">Réserver</button>
+          </li>
+          <li class="list-row bg-base-200 border border-[#DC602E] mb-5">
+            <div class="size-10 rounded-box"><%= image_tag(@game.artwork_url)%></div>
+            <div>
+              <div class="card-title text-[#DC602E]"><%= @game.title %></div>
+              <div class="text-s text-[#627C85] text-shadow-md/10 uppercase font-semibold opacity-60">User1</div>
+            </div>
+            <p class="list-col-wrap text-xs text-[#05A8AA]">
+              "Remaining Reason" became an instant hit, praised for its haunting sound and emotional depth. A viral performance brought it widespread recognition, making it one of Dio Lupa’s most iconic tracks.
+            </p>
+            <button class="btn btn-outline btn-warning">Réserver</button>
+          </li>
+
+          <li class="list-row bg-base-200 border border-[#DC602E] mb-5">
+            <div class="size-10 rounded-box"><%= image_tag(@game.artwork_url)%></div>
+            <div>
+              <div class="card-title text-[#DC602E]"><%= @game.title %></div>
+              <div class="text-s text-[#627C85] text-shadow-md/10 uppercase font-semibold opacity-60">User2</div>
+            </div>
+            <p class="list-col-wrap text-xs text-[#05A8AA]">
+              "Remaining Reason" became an instant hit, praised for its haunting sound and emotional depth. A viral performance brought it widespread recognition, making it one of Dio Lupa’s most iconic tracks.
+            </p>
+            <button class="btn btn-outline btn-warning">Réserver</button>
+          </li>
+
+          <li class="list-row bg-base-200 border border-[#DC602E] mb-5">
+            <div class="size-10 rounded-box"><%= image_tag(@game.artwork_url)%></div>
+            <div>
+              <div class="card-title text-[#DC602E]"><%= @game.title %></div>
+              <div class="text-s text-[#627C85] text-shadow-md/10 uppercase font-semibold opacity-60">User3</div>
+            </div>
+            <p class="list-col-wrap text-xs text-[#05A8AA]">
+              "Remaining Reason" became an instant hit, praised for its haunting sound and emotional depth. A viral performance brought it widespread recognition, making it one of Dio Lupa’s most iconic tracks.
+            </p>
+            <button class="btn btn-outline btn-warning">Réserver</button>
+          </li>
+      </ul>
+    </div>
+  </div>
+</div>
