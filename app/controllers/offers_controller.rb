@@ -31,6 +31,11 @@ class OffersController < ApplicationController
     end
   end
 
+  def destroy
+    @offer = Offer.find(params[:id])
+    @offer.destroy
+    redirect_to pages_dashboard_path(current_user.id), notice: 'Offer was successfully deleted.', status: :see_other
+  end
 
   private
 
@@ -42,13 +47,6 @@ class OffersController < ApplicationController
   # Only allow a list of trusted parameters through.
   def offer_params
     params.require(:offer).permit(:game_id, :rate_per_day, :description, :photo, :condition)
-
-
-def destroy
-  @offer = Offer.find(params[:id])
-  @offer.destroy
-  redirect_to pages_dashboard_path(current_user.id), notice: 'Offer was successfully deleted.', status: :see_other
-
   end
 
 end
