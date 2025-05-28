@@ -53,6 +53,9 @@ gem "devise"
 gem "faraday"
 gem "faker"
 
+gem "tailwindcss-rails"
+gem "geocoder"
+
 
 group :development, :test do
   gem "dotenv-rails"

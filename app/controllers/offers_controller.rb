@@ -1,7 +1,6 @@
 class OffersController < ApplicationController
   before_action :set_offer, only: %i[edit update destroy]
 
-
   def new
     # @game = Game.all
     @offer = Offer.new
@@ -33,11 +32,6 @@ class OffersController < ApplicationController
   end
 
 
-  def destroy
-  @offer.destroy
-  redirect_to offers_path, notice: "L'offre a bien été annulée.", status: :see_other
-  end
-
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -48,6 +42,13 @@ class OffersController < ApplicationController
   # Only allow a list of trusted parameters through.
   def offer_params
     params.require(:offer).permit(:game_id, :rate_per_day, :description, :photo, :condition)
+
+
+def destroy
+  @offer = Offer.find(params[:id])
+  @offer.destroy
+  redirect_to pages_dashboard_path(current_user.id), notice: 'Offer was successfully deleted.', status: :see_other
+
   end
 
 end

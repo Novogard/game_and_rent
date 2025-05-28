@@ -1,0 +1,54 @@
+<div class="flex-col"><h1>Dashboard</h1>
+  <h2>Hello, <%=@user.first_name%> <%=@user.last_name%></h2>
+  <h2 class="w-full bg-green-800 py-6 text-white text-3xl"><strong>Offers</strong></h2>
+<div class="container">
+  <div class="grid grid-cols-4 gap-4">
+    <%@offers.each do |offer|%>
+    <div class="card bg-base-100 w-96 shadow-sm">
+      <figure class="px-10 pt-10">
+      <%= image_tag(offer.game.artwork_url,
+      width: 400, height: 300, crop: :fill) %>
+        </figure>
+        <div class="card-body items-center text-center">
+          <h2 class="card-title"> <strong><%= offer.game.title%></strong></h2>
+          <p>Description: <%= offer.description %></p>
+          <p>Condition : <%= offer.condition %></p>
+          <p>Rate per day:<%= offer.rate_per_day %>€</p>
+          <p>Game ID: <%= offer.game_id %></p>
+            <div class="card-actions">
+              <button class="btn btn-primary">More info</button>
+            </div>
+            <div class="card-actions">
+              <%= link_to "Delete", offer_path(offer), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger" %>
+            </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+  <h2 class="w-full bg-green-800 py-6 text-white text-3xl"><strong>Bookings</strong></h2>
+  <div class="container">
+    <div class="grid grid-cols-4 gap-4">
+    <%@bookings.each do |booking|%>
+      <div class="card bg-base-100 w-96 shadow-sm">
+        <figure class="px-10 pt-10">
+        <%= image_tag(booking.offer.game.artwork_url,
+        width: 400, height: 300, crop: :fill) %>
+        </figure>
+        <div class="card-body items-center text-center">
+          <h2 class="card-title"><strong><%= booking.offer.game.title%></strong></h2>
+          <p>Renter: <%= booking.offer.user.first_name %> <%= booking.offer.user.last_name %></li>
+          <P>Start Date: <%= booking.start_date %></p>
+          <p>End Date : <%= booking.end_date%></p>
+          <p>Status:<%= booking.status %></p>
+          <p>Last Update: <%= booking.updated_at %></p>
+          <div class="card-actions">
+           <button class="btn btn-primary">Modify</button>
+           </div>
+          </div>
+       </div>
+    <% end %>
+  </div>
+</div>
+</div>
