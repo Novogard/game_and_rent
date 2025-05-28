@@ -52,7 +52,7 @@ gem "sassc-rails"
 gem "devise"
 gem "faraday"
 gem "faker"
-gem "tailwindcss-rails"
+
 
 group :development, :test do
   gem "dotenv-rails"
@@ -76,3 +76,11 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+
+gem 'simple_form-tailwind'
+
+
+gem "tailwindcss-ruby", "~> 4.1"
+
+gem "tailwindcss-rails", "~> 4.2"

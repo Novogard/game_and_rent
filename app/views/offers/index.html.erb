@@ -1,0 +1,15 @@
+
+<div class="container">
+  <% @offers.each do |offer| %>
+    <div>
+      <strong>Jeu :</strong> <%= offer.game.title if offer.game %><br>
+      <strong>Description :</strong> <%= offer.description %><br>
+      <strong>Prix/jour :</strong> <%= offer.rate_per_day %> €<br>
+      <strong>État :</strong> <%= offer.condition %><br>
+      <strong>Propriétaire :</strong> <%= offer.user.nickname if offer.user %><br>
+      <%= link_to "Annuler l'offre", offer_path(offer), data: { turbo_method: :delete, turbo_confirm: "Es-tu sûr de vouloir annuler cette offre ?" }, class: "btn btn-error" %>
+
+      <hr>
+    </div>
+  <% end %>
+</div>
