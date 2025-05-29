@@ -3,6 +3,7 @@ class GamesController < ApplicationController
     @users = User.all
     @games = Game.all
     return unless params[:query].present?
+
     sql_subquery = "title ILIKE :query OR genre ILIKE :query OR platform ILIKE :query"
     @games = @games.where(sql_subquery, query: "%#{params[:query]}%")
   end
