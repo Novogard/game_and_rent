@@ -11,6 +11,7 @@
 </div>
   <div class="grid grid-cols-4 gap-30 mt-20">
     <% @games.each do |game| %>
+      <% unless game.offers.empty? %>
         <div class="card bg-base-200 w-70 border border-[#DC602E] shadow-sm h-[500px] max-w-md">
         <%= link_to game_path(game) do %>
           <figure class="px-10 pt-10 mt-5">
@@ -25,5 +26,6 @@
           </div>
         </div>
       <% end %>
+    <% end %>
   </div>
 </div>
