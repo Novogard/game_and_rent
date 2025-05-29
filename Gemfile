@@ -52,6 +52,7 @@ gem "sassc-rails"
 gem "devise"
 gem "faraday"
 gem "faker"
+gem "pg_search"
 
 gem "geocoder"
 
