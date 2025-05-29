@@ -2,8 +2,16 @@ Rails.application.routes.draw do
   devise_for :users
   get '/dashboard', to: 'pages#dashboard', as: 'dashboard'
   get 'games/:id', to: 'games#show'
+
   get 'games/filter', to: 'games#filter', as: 'filter'
   resources :offers
+
+  resources :offers do
+    resources :bookings, only: [:create]
+  end
+
+  patch "/bookings/:id/approve", to: "bookings#approve", as: "approve_booking"
+  patch "/bookings/:id/reject", to: "bookings#reject", as: "reject_booking"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -12,5 +20,4 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root to: "pages#home"
   resources :games
-
 end

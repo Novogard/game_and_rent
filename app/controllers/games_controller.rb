@@ -3,15 +3,17 @@ class GamesController < ApplicationController
     @genres = Game.pluck(:genre).uniq
     @platforms = Game.pluck(:platform).uniq
     @users = User.all
-    @games = Game.all
-    return unless params[:query].present?
-
-    sql_subquery = "title ILIKE :query OR genre ILIKE :query OR platform ILIKE :query"
-    @games = @games.where(sql_subquery, query: "%#{params[:query]}%")
+    if params[:query].present?
+      @games = Game.search_by_text(params[:query])
+    else
+      @games = Game.all
+    end
   end
 
   def show
     @game = Game.find(params[:id])
+    @offers = Offer.where(game: @game)
+    @booking = Booking.new
   end
 
   private
