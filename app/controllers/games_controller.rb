@@ -7,6 +7,8 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
+    @offers = Offer.where(game: @game)
+    @booking = Booking.new
   end
 
   private
