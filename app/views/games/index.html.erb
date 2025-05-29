@@ -1,21 +1,21 @@
 <div class="container">
   <div class="grid grid-cols-4 gap-30 mt-20">
-      <% @offers.each do |offer| %>
+      <% @games.each do |game| %>
           <div class="card bg-base-200 w-70 border border-[#DC602E] shadow-sm h-[500px] max-w-md">
-          <%= link_to game_path(offer.game) do %>
+          <%= link_to game_path(game) do %>
             <figure class="px-10 pt-10 mt-5">
-              <%= image_tag(offer.game.artwork_url,
+              <%= image_tag(game.artwork_url,
                 width: 150, height: 80, crop: :fill) %>
             </figure>
             <div class="card-body items-center text-center h-[400px]">
-              <h2 class="card-title text-ss text-[#DC602E]"><%= offer.game.title %></h2>
-              <p class="font-bold text-xs text-[#DC602E] mb-3"><%= offer.game.platform %></p>
+              <h2 class="card-title text-ss text-[#DC602E]"><%= game.title %></h2>
+              <p class="font-bold text-xs text-[#DC602E] mb-3"><%= game.platform %></p>
               <div class="card-actions">
                 <p class="btn btn-outline btn-warning">Réserver</p>
-              <% end %>
               </div>
             </div>
           </div>
         <% end %>
+      <% end %>
   </div>
 </div>

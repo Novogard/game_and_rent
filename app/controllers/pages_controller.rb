@@ -2,8 +2,7 @@ class PagesController < ApplicationController
   before_action :authenticate_user!, only: [:dashboard]
 
   def home
-    @offers = Offer.all
-    @users = User.all
+    @games = Game.all
   end
 
   def dashboard

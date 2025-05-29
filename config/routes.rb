@@ -2,8 +2,13 @@ Rails.application.routes.draw do
   devise_for :users
   get '/dashboard', to: 'pages#dashboard', as: 'dashboard'
   get 'games/:id', to: 'games#show'
-  resources :offers do
-    resources :bookings, only: :create
+  
+  resources :offers
+  resources :bookings, only: [:create] do
+    member do
+      patch :approve
+      patch :reject
+    end
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
