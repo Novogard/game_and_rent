@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   get '/dashboard', to: 'pages#dashboard', as: 'dashboard'
   get 'games/:id', to: 'games#show'
+  get 'games/filter', to: 'games#filter', as: 'filter'
   resources :offers
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

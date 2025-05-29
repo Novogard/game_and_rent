@@ -1,23 +1,26 @@
-<div class="flex flex-col">
-  <div class="collapse collapse-arrow bg-base-100 border border-base-300">
-    <input type="radio" name="my-accordion-2" checked="checked" />
-    <div class="collapse-title font-semibold">Platforms</div>
-    <div class="collapse-content text-sm">
-      <ul>
-        <% @platforms.each do |platform| %>
-          <li><input type="checkbox" checked="unchecked" class="checkbox" /> <%= platform %> </li>
-        <% end %>
-      </ul>
+<div class="flex flex-col text-black">
+  <form id="filters-list" data-controller="filters">
+    <div class="collapse collapse-arrow bg-base-100 border border-base-300">
+      <input type="checkbox" />
+      <div class="collapse-title font-semibold">Platforms</div>
+      <div class="collapse-content text-sm">
+        <ul>
+          <% platforms.sort.each do |platform| %>
+            <li><input type="checkbox" class="checkbox" data-action="change->filters#filter" /> <%= platform %> </li>
+          <% end %>
+        </ul>
+      </div>
     </div>
-  </div>
-  <div class="collapse collapse-arrow bg-base-100 border border-base-300">
-    <input type="radio" name="my-accordion-2" />
-    <div class="collapse-title font-semibold">Genres</div>
-    <div class="collapse-content text-sm">
-      <ul>
-        <% @genres.each do |genre| %>
-          <li><input type="checkbox" checked="unchecked" class="checkbox" /> <%= platform %> </li>
-        <% end %>
-      </ul>
+    <div class="collapse collapse-arrow bg-base-100 border border-base-300">
+      <input type="checkbox" />
+      <div class="collapse-title font-semibold">Genres</div>
+      <div class="collapse-content text-sm">
+        <ul>
+          <% genres.sort.each do |genre| %>
+            <li><input type="checkbox" class="checkbox" data-action="change->filters#filter" /> <%= genre %> </li>
+          <% end %>
+        </ul>
+      </div>
     </div>
-  </div>
+  </form>
+</div>
