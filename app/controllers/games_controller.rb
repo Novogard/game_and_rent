@@ -1,5 +1,7 @@
 class GamesController < ApplicationController
   def index
+    @genres = Game.pluck(:genre).uniq
+    @platforms = Game.pluck(:platform).uniq
     @users = User.all
     @games = Game.all
     return unless params[:query].present?
