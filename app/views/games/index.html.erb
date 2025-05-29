@@ -4,9 +4,8 @@
     <%= render "sidebar", platforms: @platforms, genres: @genres %>
   </aside>
   <main class="w-4/5 bg-white p-6 overflow-auto">
-    <div class="grid grid-cols-4 gap-4 mt-20" data-filters-target="results" data-filters-target="results">
-      <% render "games", games: @games %>
+    <div class="grid grid-cols-4 gap-4 mt-20" id="results" data-filters-target="results">
+      <%= render "games", games: @games %>
     </div>
   </main>
-
 </div>

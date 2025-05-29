@@ -26,13 +26,13 @@ export default class extends Controller {
 
     const genreQuery = []
     selectedGenres.forEach(genre => {
-      genreQuery.push('genre[]=' + `${genre}`)
+      genreQuery.push('genres[]=' + `${genre}`)
     })
     const genreQueryString = genreQuery.join('&')
 
     const platformQuery = []
     selectedPlatforms.forEach(platform => {
-      platformQuery.push('platform[]=' + `${platform}`)
+      platformQuery.push('platforms[]=' + `${platform}`)
     })
     const platformQueryString = platformQuery.join('&')
 

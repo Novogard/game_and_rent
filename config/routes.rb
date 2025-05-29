@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
   get '/dashboard', to: 'pages#dashboard', as: 'dashboard'
-  get 'games/:id', to: 'games#show'
-
-  get 'games/filter', to: 'games#filter', as: 'filter'
-  resources :offers
 
   resources :offers do
     resources :bookings, only: [:create]
@@ -19,5 +15,9 @@ Rails.application.routes.draw do
   # get "up" => "rails/health#show", as: :rails_health_check
   # Defines the root path route ("/")
   root to: "pages#home"
-  resources :games
+  resources :games do
+    collection do
+      get 'filter', to: 'games#filter', as: 'filter'
+    end
+  end
 end
