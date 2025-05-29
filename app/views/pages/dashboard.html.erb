@@ -1,55 +1,105 @@
 <div class="flex-col">
+
   <h2 class="w-full bg-[#05A8AA] py-1 text-[#DC602E] font-bold">Hello, <%=@user.first_name%> <%=@user.last_name%></h2>
   <hr class="text-[#DC602E]" />
   <h2 class="w-full bg-[#05A8AA] py-6 text-[#DC602E] text-center text-3xl opacity-80 "><strong>Offers</strong></h2>
-<div class="container mt-5 mb-5">
-  <div class="grid grid-cols-4 gap-4">
-    <%@offers.each do |offer|%>
-    <div class="card bg-base-200 w-85 border border-[#DC602E] shadow-sm h-[700px]">
-      <figure class="px-10 pt-10 mt-5">
-      <%= image_tag(offer.game.artwork_url,
-      width: 400, height: 300, crop: :fill) %>
-        </figure>
-        <div class="card-body items-center text-center h-[420px]">
-          <h2 class="card-title text-[#DC602E]"> <strong><%= offer.game.title%></strong></h2>
-          <p class="overflow-y-scroll text-[#05A8AA]">Description: <%= offer.description %></p>
-          <p class="text-[#05A8AA]">Condition : <%= offer.condition %></p>
-          <p class="font-bold text-[#DC602E]">Rate per day:<%= offer.rate_per_day %>€</p>
-          <p>Game ID: <%= offer.game_id %></p>
-            <div class="card-actions">
-              <button class="btn btn-outline btn-warning">More info</button>
-            </div>
-            <div class="card-actions">
-              <%= link_to "Delete", offer_path(offer), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger" %>
-            </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
-</div>
 
-  <h2 class="w-full bg-[#05A8AA] py-6 text-[#DC602E] text-center opacity-80 text-3xl"><strong>Bookings</strong></h2>
   <div class="container mt-5 mb-5">
-    <div class="grid grid-cols-4 gap-4">
-    <%@bookings.each do |booking|%>
+    <div class="flex flex-row-reverse">
+      <h2 class= "btn btn-warning mb-5"><%= link_to "Add a new offer", new_offer_path%></h2>
+    </div>
+
+      <div class="grid grid-cols-3 gap-27">
+        <%@offers.each do |offer|%>
+        <div class="card bg-base-200 w-85 border border-[#DC602E] shadow-sm h-[700px]">
+          <figure class="px-10 pt-10 mt-5">
+          <%= image_tag(offer.game.artwork_url,
+          width: 400, height: 300, crop: :fill) %>
+          </figure>
+          <div class="card-body items-center text-center h-[420px]">
+            <h2 class="card-title text-[#DC602E]"> <strong><%= offer.game.title%></strong></h2>
+            <p class="overflow-y-scroll text-[#05A8AA]">Description: <%= offer.description %></p>
+            <p class="text-[#05A8AA]">Condition : <%= offer.condition %></p>
+            <p class="font-bold text-[#DC602E]">Rate per day:<%= offer.rate_per_day %>€</p>
+            <p>Game ID: <%= offer.game_id %></p>
+            <div class="card-actions">
+              <button class="btn btn-outline btn-warning">Modify</button>
+            </div>
+            <div class="card-actions">
+              <%= link_to offer_path(offer),
+              data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do%>
+              <i class="fa-solid fa-trash text-[1.5em] text-red-600"></i>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+    </div>
+  </div>
+
+  <h2 class="w-full bg-[#05A8AA] py-6 text-[#DC602E] text-center opacity-80 text-3xl"><strong>Games Lent to Others</strong></h2>
+  <div class="container mt-5 mb-5">
+    <div class="grid grid-cols-3 gap-27">
+      <%@bookings.each do |booking|%>
       <div class="card bg-base-200 w-85 border border-[#DC602E] shadow-sm h-[700px]">
         <figure class="px-10 pt-10 mt-5">
         <%= image_tag(booking.offer.game.artwork_url,
         width: 400, height: 300, crop: :fill) %>
         </figure>
-        <div class="card-body items-center text-center h-[420px]">
-          <h2 class="card-title text-[#DC602E]"><strong><%= booking.offer.game.title%></strong></h2>
-          <p class="text-[#05A8AA]">Renter: <%= booking.offer.user.first_name %> <%= booking.offer.user.last_name %></li>
-          <P class="text-[#05A8AA]">Start Date: <%= booking.start_date %></p>
-          <p class="text-[#05A8AA]">End Date : <%= booking.end_date%></p>
-          <p class="text-[#05A8AA]">Status:<%= booking.status %></p>
-          <p class="text-[#05A8AA]">Last Update: <%= booking.updated_at %></p>
-          <div class="card-actions">
-          <button class="btn btn-outline btn-warning">Modify</button>
-          </div>
-          </div>
+          <div class="card-body items-center text-center h-[420px]">
+            <h2 class="card-title text-[#DC602E]"><strong><%= booking.offer.game.title%></strong></h2>
+            <p class="text-[#05A8AA]">Renter: <%= booking.offer.user.first_name %> <%= booking.offer.user.last_name %></li>
+            <P class="text-[#05A8AA]">Start Date: <%= booking.start_date %></p>
+            <p class="text-[#05A8AA]">End Date : <%= booking.end_date%></p>
+            <p class="text-[#05A8AA]">Status:<%= booking.status %></p>
+            <p class="text-[#05A8AA]">Last Update: <%= booking.updated_at %></p>
+            <div class="card-actions">
+              <button class="btn btn-outline btn-warning">Modify</button>
+            </div>
+            <div class="flex flex-row justify-between gap-2">
+              <div class="card-actions">
+                <button class="btn btn-outline btn-success">
+                <%= link_to approve_booking_path(booking),
+                data: { turbo_method: :patch } do%>
+                <i class="fa-solid fa-check text-[1.5em]"></i>
+                <% end %>
+                </button>
+              </div>
+              <div class="card-actions">
+                <button class="btn btn-outline btn-error">
+                <%= link_to reject_booking_path(booking),
+                data: { turbo_method: :patch } do%>
+                <i class="fa-solid fa-xmark text-[1.5em]"></i>
+                <% end %>
+                </button>
+              </div>
+              </div>
+        </div>
       </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
-</div>
+
+
+  <h2 class="w-full bg-[#05A8AA] py-6 text-[#DC602E] text-center opacity-80 text-3xl"><strong>Games Borrowed from Others</strong></h2>
+  <div class="container mt-5 mb-5">
+    <div class="grid grid-cols-3 gap-27">
+      <%@bookings.each do |booking|%>
+      <div class="card bg-base-200 w-85 border border-[#DC602E] shadow-sm h-[700px]">
+          <figure class="px-10 pt-10 mt-5"> <%= image_tag(booking.offer.game.artwork_url, width: 400, height: 300, crop: :fill) %> </figure>
+          <div class="card-body items-center text-center h-[420px]">
+            <h2 class="card-title text-[#DC602E]"><strong><%= booking.offer.game.title%></strong></h2>
+            <p class="text-[#05A8AA]">Renter: <%= booking.user.first_name %> <%= booking.user.last_name %></li>
+            <P class="text-[#05A8AA]">Start Date: <%= booking.start_date %></p>
+            <p class="text-[#05A8AA]">End Date : <%= booking.end_date%></p>
+            <p class="text-[#05A8AA]">Status:<%= booking.status %></p>
+            <p class="text-[#05A8AA]">Last Update: <%= booking.updated_at %></p>
+              <div class="card-actions">
+                <button class="btn btn-outline btn-warning">Modify</button>
+              </div>
+            </div>
+        </div>
+        <% end %>
+    </div>
+  </div>
 </div>
