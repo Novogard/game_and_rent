@@ -1,28 +1,34 @@
-
-<div class="navbar bg-[#05A8AA] rounded-sm shadow-sm h-46 fixed top-0 right-0 left-0">
-  <div class="flex-1 relative size-32">
-    <a class="btn btn-ghost text-xl text-[#DC602E] place-self-start" style="margin-right: 46em;">Games&Rent</a>
+<div class="navbar bg-[#05A8AA] shadow-sm mb-5">
+  <div class="flex-1">
+    <%= link_to root_path do %>
+      <button class="btn btn-ghost text-[#DC602E] text-xl font-bold">Games&Rent</button>
+    <% end %>
+  </div>
+  <div class="flex gap-2">
     <div class="dropdown dropdown-end">
       <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
         <div class="w-10 rounded-full">
-            <i class="fa-solid fa-circle-user text-white text-4xl"></i>
+          <i class="fa-solid fa-circle-user text-white text-4xl"></i>
         </div>
       </div>
       <ul
         tabindex="0"
         class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
         <li>
-          <a class="justify-between">
+        <%= link_to dashboard_path do%>
+          <button class="justify-between">
             Profile
             <span class="badge">New</span>
-          </a>
+          </button>
+          <% end %>
         </li>
-        <li><a class>Settings</a></li>
+        <li><a>Settings</a></li>
         <li><a>Logout</a></li>
       </ul>
     </div>
   </div>
 </div>
+
 <!--
   <div class="gap-0 mx-auto">
     <input type="text" placeholder="Search" class="input input-bordered py-3 w-24 md:w-150" />
