@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   get '/dashboard', to: 'pages#dashboard', as: 'dashboard'
   get 'games/:id', to: 'games#show'
+  patch '/edit-booking-dates', to: 'bookings#edit_booking_dates'
   resources :offers
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
