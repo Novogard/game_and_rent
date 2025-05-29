@@ -1,11 +1,11 @@
 class GamesController < ApplicationController
   def index
     @users = User.all
-    @games = Game.all
-    return unless params[:query].present?
-
-    sql_subquery = "title ILIKE :query OR genre ILIKE :query OR platform ILIKE :query"
-    @games = @games.where(sql_subquery, query: "%#{params[:query]}%")
+    if params[:query].present?
+      @games = Game.search_by_text(params[:query])
+    else
+      @games = Game.all
+    end
   end
 
   def show
