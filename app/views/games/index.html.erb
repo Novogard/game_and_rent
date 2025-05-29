@@ -1,6 +1,7 @@
 <div class="container">
   <div class="grid grid-cols-4 gap-4 mt-20">
       <% @games.each do |game| %>
+        <% unless game.offers.empty? %>
           <div class="card bg-base-200 w-85 border border-[#DC602E] shadow-sm h-[700px]">
             <figure class="px-10 pt-10 mt-5">
               <%= image_tag(game.artwork_url,
@@ -18,5 +19,6 @@
             </div>
           </div>
         <% end %>
+      <% end %>
   </div>
 </div>
