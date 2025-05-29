@@ -1,7 +1,6 @@
 class GamesController < ApplicationController
-
   def index
-    @offers = Offer.all
+    @games = Game.all
     @users = User.all
   end
 
@@ -14,5 +13,4 @@ class GamesController < ApplicationController
   def game_params
     params.require(:game).permit(:title, :platform, :overview, :genre, :artwork_url)
   end
-
 end

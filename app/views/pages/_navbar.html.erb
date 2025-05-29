@@ -4,6 +4,18 @@
       <%= image_tag("Logo_Games_and_rent.webp", width: "100", height: "100")  %>
     <% end %>
   </div>
+  <% if current_page?(controller: "games", action: "index") %>
+      <div>
+          <%= form_with url: games_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query,
+              params[:query],
+              class: "form-control px-4 py-2 border border-gray-300 rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500",
+              placeholder: "Search for a game to rent"
+          %>
+        <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  <% end %>
   <div class="flex gap-2">
     <div class="dropdown dropdown-end">
       <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
@@ -28,9 +40,3 @@
     </div>
   </div>
 </div>
-
-<!--
-  <div class="gap-0 mx-auto">
-    <input type="text" placeholder="Search" class="input input-bordered py-3 w-24 md:w-150" />
-  </div>
--->

@@ -11,23 +11,25 @@
   </div>
 </div>
   <div class="grid grid-cols-4 gap-4 mt-20">
-      <% @offers.each do |offer| %>
+      <% @games.each do |game| %>
+        <% unless game.offers.empty? %>
           <div class="card bg-base-200 w-85 border border-[#DC602E] shadow-sm h-[700px]">
             <figure class="px-10 pt-10 mt-5">
-              <%= image_tag(offer.game.artwork_url,
+              <%= image_tag(game.artwork_url,
                 width: 400, height: 300, crop: :fill) %>
             </figure>
             <div class="card-body items-center text-center h-[420px]">
-              <h2 class="card-title text-[#DC602E]"><%= offer.game.title %></h2>
-              <p class="overflow-y-scroll text-[#05A8AA]"><%= offer.game.overview %></p>
-              <p class="font-bold text-[#DC602E]"><%= offer.game.platform %></p>
+              <h2 class="card-title text-[#DC602E]"><%= game.title %></h2>
+              <p class="overflow-y-scroll text-[#05A8AA]"><%= game.overview %></p>
+              <p class="font-bold text-[#DC602E]"><%= game.platform %></p>
               <div class="card-actions">
-                <%= link_to game_path(offer.game) do %>
+                <%= link_to game_path(game) do %>
                 <button class="btn btn-outline btn-warning">Réserver</button>
               <% end %>
               </div>
             </div>
           </div>
         <% end %>
+      <% end %>
   </div>
 </div>
