@@ -2,8 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   get '/dashboard', to: 'pages#dashboard', as: 'dashboard'
   get 'games/:id', to: 'games#show'
+  
   resources :offers
-  resources :bookings do
+  resources :bookings, only: [:create] do
     member do
       patch :approve
       patch :reject
