@@ -7,7 +7,11 @@ class OffersController < ApplicationController
   end
 
   def index
-    @offers = Offer.all
+    if params[:query].present?
+      @games = Game.search_by_title(params[:query])
+    else
+      @games = Game.all
+    end
   end
 
   def edit
@@ -17,7 +21,7 @@ class OffersController < ApplicationController
     @offer = Offer.new(offer_params)
     @offer.user = current_user
     if @offer.save
-      redirect_to offers_path, notice: "offer was successfully created."
+      redirect_to dashboard_path , notice: "offer was successfully created."
     else
       render :new, status: :unprocessable_entity
     end

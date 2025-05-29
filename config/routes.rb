@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   get '/dashboard', to: 'pages#dashboard', as: 'dashboard'
-  get 'games/:id', to: 'games#show'
+
   resources :offers
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   # get "up" => "rails/health#show", as: :rails_health_check
   # Defines the root path route ("/")
   root to: "pages#home"
-  resources :games
-
+  resources :games do
+    get "autocomplete", on: :collection
+  end
 end
