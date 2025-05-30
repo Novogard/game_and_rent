@@ -1,6 +1,6 @@
   <% games.each do |game| %>
     <% unless game.offers.empty? %>
-      <div class="card bg-base-200 hover:bg-base-300 w-70 h-100 border border-[#DC602E] hover:border-[#05A8AA] shadow-sm">
+      <div class="card bg-white hover:bg-base-300 w-70 h-100 border border-[#DC602E] hover:border-[#05A8AA] shadow-sm">
         <%= link_to game_path(game) do %>
         <figure class="px-3 pt-3">
           <%= image_tag(game.artwork_url, class: "rounded-lg",
