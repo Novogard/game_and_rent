@@ -7,7 +7,8 @@
       data-controller="searchclick"
       data-action="click->searchclick#select"
       data-searchclick-title-value="<%= game.title %>"
-      data-searchclick-id-value="<%= game.id %>"
+      data-searchclick-id-value="<%= game.id%>"
+      data-searchclick-artwork-url-value="<%= game.artwork_url %>"
   >
   <div class="game-image mr-4">
       <%= image_tag game.artwork_url, alt: game.title, class: "w-16 h-16 object-cover" if game.artwork_url.present? %>
