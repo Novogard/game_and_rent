@@ -40,7 +40,7 @@
   <h2 class="w-full bg-[#05A8AA] py-6 text-[#DC602E] text-center opacity-80 text-3xl"><strong>Games Lent to Others</strong></h2>
   <div class="container mt-5 mb-5">
     <div class="grid grid-cols-3 gap-27">
-      <%@bookings.each do |booking|%>
+      <%@bookings_given.each do |booking|%>
       <div class="card bg-base-200 w-85 border border-[#DC602E] shadow-sm h-[700px]">
         <figure class="px-10 pt-10 mt-5">
         <%= image_tag(booking.offer.game.artwork_url,
