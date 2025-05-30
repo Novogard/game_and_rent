@@ -14,7 +14,9 @@
       <ul
         tabindex="0"
         class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+        <% if current_user %>
         <li><h2 class="w-fulltext-[#DC602E] font-bold">Hello, <%=current_user.first_name%></h2></li>
+        <% end %>
         <li>
         <% if current_user %>
         <%= link_to dashboard_path do%>
