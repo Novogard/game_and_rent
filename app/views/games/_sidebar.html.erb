@@ -5,7 +5,7 @@
       <div class="collapse-title font-semibold">Platforms</div>
       <div class="collapse-content text-sm">
         <ul>
-          <% @platforms.sort.each do |platform| %>
+          <% platforms.sort.each do |platform| %>
             <li><input type="checkbox" class="checkbox platform-checkbox" name="platforms[]" value="<%= platform %>" data-action="change->filters#filter" /> <%= platform %> </li>
           <% end %>
         </ul>
@@ -16,7 +16,7 @@
       <div class="collapse-title font-semibold">Genres</div>
       <div class="collapse-content text-sm">
         <ul>
-          <% @genres.sort.each do |genre| %>
+          <% genres.sort.each do |genre| %>
             <li><input type="checkbox" class="checkbox genre-checkbox" name="genres[]" value="<%= genre %>"  data-action="change->filters#filter" /> <%= genre %> </li>
           <% end %>
         </ul>
