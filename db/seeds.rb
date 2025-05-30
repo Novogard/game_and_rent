@@ -5,9 +5,10 @@
 
 
 puts "Cleaning DB"
-User.destroy_all
-Offer.destroy_all
 Booking.destroy_all
+Offer.destroy_all
+Game.destroy_all
+User.destroy_all
 puts "DB cleaned"
 
 puts "Creating games"
@@ -23,16 +24,19 @@ results = JSON.parse(response.body)
 games = results.to_a
 
 games.each do |game|
-  Game.create!({
+  bubu = Game.create!({
     title: game['name'],
     platform: game['platforms'][0],
     overview: game['summary'],
     genre: game['genres'][0],
     artwork_url: "https://images.igdb.com/igdb/image/upload/t_1080p/#{game['cover']['image_id']}.jpg"
   })
+  p bubu.genre
 end
 
 platform_ids = Game.pluck(:platform).uniq
+p platform_ids
+
 
 platform_response = Faraday.post("https://api.igdb.com/v4/platforms/") do |req|
   req.headers["Client-ID"] = ENV['CLIENT_ID']
@@ -43,7 +47,11 @@ end
 
 platforms = JSON.parse(platform_response.body)
 
+
 genre_ids = Game.pluck(:genre).uniq
+p genre_ids
+
+
 genre_response = Faraday.post("https://api.igdb.com/v4/genres") do |req|
   req.headers["Client-ID"] = ENV['CLIENT_ID']
   req.headers["Authorization"] = ENV['ACCESS_TOKEN']
@@ -55,12 +63,23 @@ genres = JSON.parse(genre_response.body)
 
 platform_names = platforms.each_with_object({}) { |platform, hash| hash[platform['id']] = platform['name'] }
 genre_names = genres.each_with_object({}) { |genre, hash| hash[genre['id']] = genre['name'] }
+p genre_names
 
+p "=========================="
+p Game.count
 Game.all.each do |video_game|
   video_game.platform = platform_names[video_game.platform.to_i]
+  # p "-----------------------"
+  # p video_game.genre
   video_game.genre = genre_names[video_game.genre.to_i]
+  # p "======================"
+  # p video_game.genre
+  # p video_game.genre
+  # p video_game.genre.to_i
+  #  p genre_names[12]
   video_game.save!
 end
+
 
 puts "Games created"
 
