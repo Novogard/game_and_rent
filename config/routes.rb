@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
   get '/dashboard', to: 'pages#dashboard', as: 'dashboard'
-  get 'games/:id', to: 'games#show'
 
   resources :offers do
     resources :bookings, only: [:create]
@@ -17,6 +16,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root to: "pages#home"
   resources :games do
-    get "autocomplete", on: :collection
+    collection do
+      get 'filter', to: 'games#filter', as: 'filter'
+      get "autocomplete"
+    end
   end
 end
