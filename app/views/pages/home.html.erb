@@ -1,15 +1,16 @@
 <div class="container">
-<div class="hero bg-[#05A8AA] h-100">
+<%# <div class="hero bg-[#05A8AA] h-100">
   <div class="hero-content text-center">
     <div class="max-w-md">
-      <h1 class="text-5xl text-[#DC602E] font-bold">Games & Rent</h1>
-      <p class="py-6 text-white">
-        Jouer aux jeux vidéos n'a jamais été aussi facile !
-      </p>
+
     </div>
-  </div>
+  </div> %>
+<div class="banner flex justify-center items-end">
+  <%= link_to "Tous nos jeux", games_path, class:"btn btn-warning w-40 h-25 my-10" %>
 </div>
-  <%= link_to "Tous nos jeux", games_path, class:"btn btn-warning mt-2" %>
+
+</div>
+
   <div class="grid grid-cols-4 gap-30 m-15">
     <% @games.each do |game| %>
       <% unless game.offers.empty? %>
