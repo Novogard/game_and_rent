@@ -39,7 +39,7 @@ export default class extends Controller {
 
     if (preview && this.artworkUrlValue) {
       preview.innerHTML = `
-        <img src="${this.artworkUrlValue}" alt="Image du jeu" class="w-auto h-80 object-contain rounded-lg shadow-md rounded-lg border border-gray-300 shadow-lg">`
+        <img src="${this.artworkUrlValue}" alt="Image du jeu" class="w-full h-full object-contain rounded-lg border border-gray-500 shadow-lg animate-[spin_2s_ease-in-out] transform scale-90 transition-transform duration-500 ease-in-out">`
     }
 
 
