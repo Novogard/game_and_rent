@@ -2,10 +2,10 @@
   <div class="grid grid-cols-4 gap-30 mt-20">
       <% @games.each do |game| %>
         <% unless game.offers.empty? %>
-          <div class="card bg-base-200 w-70 border border-[#DC602E] shadow-sm h-[500px] max-w-md">
+          <div class="card bg-base-200 hover:bg-base-300 w-70 h-100 border border-[#DC602E] hover:border-[#05A8AA] shadow-sm">
           <%= link_to game_path(game) do %>
-            <figure class="px-10 pt-10 mt-5">
-              <%= image_tag(game.artwork_url,
+            <figure class="px-10 pt-3">
+              <%= image_tag(game.artwork_url, class: "rounded-lg",
                 width: 150, height: 80, crop: :fill) %>
             </figure>
             <div class="card-body items-center text-center h-[400px]">
