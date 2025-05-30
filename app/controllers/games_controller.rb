@@ -1,12 +1,17 @@
 class GamesController < ApplicationController
-
   def index
-    @offers = Offer.all
     @users = User.all
+    if params[:query].present?
+      @games = Game.search_by_text(params[:query])
+    else
+      @games = Game.all
+    end
   end
 
   def show
     @game = Game.find(params[:id])
+    @offers = Offer.where(game: @game)
+    @booking = Booking.new
   end
 
   # par JSON
@@ -38,5 +43,4 @@ end
   def game_params
     params.require(:game).permit(:title, :platform, :overview, :genre, :artwork_url)
   end
-
 end

@@ -1,33 +1,31 @@
 <div class="container">
-<div class="hero bg-[#05A8AA] min-h-screen">
+<div class="hero bg-[#05A8AA] h-100">
   <div class="hero-content text-center">
     <div class="max-w-md">
-      <h1 class="text-5xl text-[#DC602E] font-bold">Game & rent</h1>
+      <h1 class="text-5xl text-[#DC602E] font-bold">Game & Rent</h1>
       <p class="py-6 text-white">
-        Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-        quasi. In deleniti eaque aut repudiandae et a id nisi.
+        Jouer aux jeux vidéo n'a jamais été aussi facile !
       </p>
     </div>
   </div>
 </div>
-  <div class="grid grid-cols-4 gap-4 mt-20">
-      <% @offers.each do |offer| %>
-          <div class="card bg-base-200 w-85 border border-[#DC602E] shadow-sm h-[700px]">
-            <figure class="px-10 pt-10 mt-5">
-              <%= image_tag(offer.game.artwork_url,
-                width: 400, height: 300, crop: :fill) %>
-            </figure>
-            <div class="card-body items-center text-center h-[420px]">
-              <h2 class="card-title text-[#DC602E]"><%= offer.game.title %></h2>
-              <p class="overflow-y-scroll text-[#05A8AA]"><%= offer.game.overview %></p>
-              <p class="font-bold text-[#DC602E]"><%= offer.game.platform %></p>
-              <div class="card-actions">
-                <%= link_to game_path(offer.game) do %>
-                <button class="btn btn-outline btn-warning">Réserver</button>
-              <% end %>
-              </div>
-            </div>
+  <div class="grid grid-cols-4 gap-30 mt-20">
+    <% @games.each do |game| %>
+      <% unless game.offers.empty? %>
+        <div class="card bg-base-200 w-70 border border-[#DC602E] shadow-sm h-[500px] max-w-md">
+        <%= link_to game_path(game) do %>
+          <figure class="px-10 pt-10 mt-5">
+            <%= image_tag(game.artwork_url,
+              width: 150, height: 80, crop: :fill) %>
+          </figure>
+          <div class="card-body items-center text-center h-[400px]">
+            <h2 class="card-title text-ss text-[#DC602E]"><%= game.title %></h2>
+            <p class="font-bold text-xs text-[#DC602E] mb-3"><%= game.platform %></p>
+              <p class="btn btn-warning">Réserver</p>
+            <% end %>
           </div>
-        <% end %>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 </div>

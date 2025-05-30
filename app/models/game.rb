@@ -7,5 +7,11 @@ class Game < ApplicationRecord
     using: {
       tsearch: { prefix: true } # permet la recherche partielle
     }
-
+  
+  pg_search_scope :search_by_text,
+    against: [ :title, :genre, :platform ],
+    using: {
+      tsearch: { prefix: true }
+    }
+  
 end
