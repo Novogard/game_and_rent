@@ -1,8 +1,8 @@
 
 <div class="container">
   <div class="grid grid-cols-2 gap-2 p-4">
-          <div class="card bg-base-200 w-110 h-[800px] border border-[#DC602E] shadow-sm ml-20">
-            <figure class="px-10 pt-5">
+          <div class="card bg-white w-110 h-[800px] border border-[#DC602E] shadow-sm ml-20">
+            <figure class="px-10 pt-5 mt-2">
               <%= image_tag(@game.artwork_url, class: "rounded-lg",
                   width: 400, height: 300, crop: :fill) %>
             </figure>
@@ -13,7 +13,7 @@
             </div>
           </div>
           <div>
-      <ul class="list bg-base-100 rounded-box shadow-md">
+      <ul class="list rounded-box shadow-md">
         <li class="p-4 pb-2 text-xl text-[#DC602E] text-center underline font-bold opacity-60 tracking-wide mb-5">Les offres :</li>
           <% @offers.each do |offer| %>
             <li class="list-row bg-white hover:bg-base-300 border border-[#DC602E] hover:border-[#05A8AA] mb-5">
@@ -26,7 +26,7 @@
               </div>
               <button class="btn btn-outline btn-warning" onclick="my_modal_<%=offer.id%>.showModal()">Réserver</button>
                 <dialog id="my_modal_<%=offer.id%>" class="modal">
-                  <div class="modal-box h-155 w-100 max-h-50x1">
+                  <div class="modal-box h-160 w-100 max-h-50x1">
                     <div class="size-40 mb-20"><%= image_tag(@game.artwork_url)%></div>
                     <h3 class="text-lg text-[#DC602E] font-bold">Réservation : <%= offer.rate_per_day %> € / jr</h3>
                     <p class="py-4 text-[#05A8AA]"><%= offer.description %></p>
