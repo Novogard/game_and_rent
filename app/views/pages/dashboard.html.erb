@@ -40,7 +40,7 @@
   <h2 class="w-full bg-[#05A8AA] py-6 text-[#DC602E] text-center opacity-80 text-3xl"><strong>Games Lent to Others</strong></h2>
   <div class="container mt-5 mb-5">
     <div class="grid grid-cols-3 gap-27">
-      <%@bookings.each do |booking|%>
+      <%@bookings_given.each do |booking|%>
       <div class="card bg-base-200 w-85 border border-[#DC602E] shadow-sm h-[700px]">
         <figure class="px-10 pt-10 mt-5">
         <%= image_tag(booking.offer.game.artwork_url, class: "rounded-lg",
@@ -79,8 +79,6 @@
       <% end %>
     </div>
   </div>
-
-
   <h2 class="w-full bg-[#05A8AA] py-6 text-[#DC602E] text-center opacity-80 text-3xl"><strong>Games Borrowed from Others</strong></h2>
   <div class="container mt-5 mb-5">
     <div class="grid grid-cols-3 gap-27">
@@ -91,6 +89,12 @@
             <h2 class="card-title text-[#DC602E]"><strong><%= booking.offer.game.title%></strong></h2>
             <p class="text-[#05A8AA]">Renter: <%= booking.user.first_name %> <%= booking.user.last_name %></li>
             <P class="text-[#05A8AA]">Start Date: <%= booking.start_date %></p>
+            <%= form_with url: "/edit-booking-dates", method: :patch do |f| %>
+            <%= f.date_field :start_date, value: booking.start_date %>
+            <%= f.date_field :end_date, value: booking.end_date %>
+            <input type="hidden" name="id" value="<%=booking.id %>">
+            <%= f.submit %>
+            <% end %>
             <p class="text-[#05A8AA]">End Date : <%= booking.end_date%></p>
             <p class="text-[#05A8AA]">Status:<%= booking.status %></p>
             <p class="text-[#05A8AA]">Last Update: <%= booking.updated_at %></p>
