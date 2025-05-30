@@ -1,0 +1,15 @@
+
+<div class="container border rounded bg-white shadow-md p-4 border-amber-500
+ " style="max-height: 300px; overflow-y: auto;">
+  <% games.each do |game| %>
+  <div class="game-horizontal-card p-2 border mb-2 flex items-center">
+    <div class="game-image mr-4">
+      <%= image_tag game.artwork_url, alt: game.title, class: "w-16 h-16 object-cover" if game.artwork_url.present? %>
+    </div>
+    <div class="game-info" >
+      <h3 class="font-bold"><%= game.title %></h3>
+
+    </div>
+  </div>
+  <% end %>
+</div>
