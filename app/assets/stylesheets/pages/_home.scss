@@ -1,1 +1,10 @@
 // Specific CSS for your home-page
+.banner {
+  width: 100%;
+  height: 80vh !important;
+  // height: 500px;
+  background-size: cover;
+  background-position: top;
+  object-fit: cover;
+  background-image: image_url('Banner.webp');
+}
