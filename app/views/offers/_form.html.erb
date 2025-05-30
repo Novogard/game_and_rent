@@ -1,4 +1,6 @@
-<div class="w-full px-4 md:px-16 py-8" data-controller="autocomplete-game" data-autocomplete-game-url-value="<%= autocomplete_games_path	%>">
+<div class="w-full px-4 md:px-16 py-8"
+    data-controller="autocomplete-game"
+    data-autocomplete-game-url-value="<%= autocomplete_games_path	%>">
 
   <%= simple_form_for(offer) do |f| %>
 
@@ -15,9 +17,15 @@
                  class="input input-warning w-full">
 
         <div data-autocomplete-game-target = "results"></div>
+        <input type="text" id="selected-game" , class="border p-2 rounded w-full mt-4" placeholder="Titre sélectionné..." readonly>
 
-        <%= f.association :game, input_html: { class: "input input-warning w-full" } %>
+
         <%# <%= f.input :game, collection: Game.all, input_html: { class: "input input-warning w-full" } %>
+        <%# <%= f.association :game, input_html: { class: "input input-warning w-full" } %>
+
+        <!-- Champ caché pour stocker le game_id -->
+        <%= f.input :game_id, as: :hidden, input_html: { id: "selected-game-id" ,class: "input input-warning w-full"  } %>
+
         <%# <%= f.input :condition, input_html: { class: "input input-warning w-full" } %>
         <%= f.input :condition, collection: ['Bad', 'OK', 'Good', 'Mint'], prompt: 'Choisissez une condition' , input_html: { class: "input input-warning w-full" } %>
       </div>
