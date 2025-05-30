@@ -1,21 +1,24 @@
 <div class="flex-col">
 
-  <h2 class="w-full bg-[#05A8AA] py-1 text-white font-bold">Hello, <%=@user.first_name%> <%=@user.last_name%></h2>
+  <h2 class="w-fulltext-[#DC602E] font-bold">Hello, <%=@user.first_name%> <%=@user.last_name%></h2>
   <hr class="text-[#DC602E]" />
-  <h2 class="w-full bg-[#05A8AA] py-6 text-white text-center text-3xl opacity-80 rounded-xl mt-2 "><strong>Offers</strong></h2>
 
-  <div class="container mt-5 mb-5">
+<div class="container mx-auto px-5">
+  <h2 class="w-full bg-[#05A8AA] py-3 text-white text-center text-3xl opacity-80 mt-2 "><strong>Offers</strong></h2>
+  <div class="container mt-2 mb-5">
     <div class="flex flex-row-reverse">
       <h2 class= "btn btn-warning"><%= link_to "Add a new offer", new_offer_path%></h2>
     </div>
 
-      <div class="grid grid-cols-4 gap-30 mt-20">
+      <div class="grid grid-cols-4 gap-10 mt-5">
         <%@offers.each do |offer|%>
-        <div class="card bg-white hover:bg-base-300 w-70 h-100 border border-[#DC602E] hover:border-[#05A8AA] shadow-sm">
-          <div class="card-actions m-1">
+
+        <div class="card bg-base-200 hover:bg-base-300 w-70 h-100 border border-[#DC602E] hover:border-[#05A8AA] shadow-sm">
+          <div class="card-actions m-1 flex justify-end">
+
             <%= link_to offer_path(offer),
             data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do%>
-            <i class="fa-solid fa-trash text-[1.5em] text-red-600"></i>
+            <i class="fa-solid fa-trash text-[1.5em] text-red-600 text-right"></i>
             <% end %>
           </div>
           <figure class="px-3 pt-3">
@@ -35,9 +38,9 @@
     </div>
   </div>
 
-  <h2 class="w-full bg-[#05A8AA] py-6 text-white text-center opacity-80 text-3xl rounded-xl mt-2"><strong>Games Lent to Others</strong></h2>
-  <div class="container mt-5 mb-5">
-    <div class="grid grid-cols-4 gap-30 mt-20">
+  <h2 class="w-full bg-[#05A8AA] py-3 text-white text-center opacity-80 text-3xl mt-2"><strong>Games Lent to Others</strong></h2>
+  <div class="container mt-2 mb-5">
+    <div class="grid grid-cols-4 gap-10 mt-5">
       <%@bookings_given.each do |booking|%>
       <div class="card bg-base-200 hover:bg-base-300 w-70 h-100 border border-[#DC602E] hover:border-[#05A8AA] shadow-sm">
         <figure class="px-3 pt-3">
@@ -75,23 +78,25 @@
       <% end %>
     </div>
   </div>
-  <h2 class="w-full bg-[#05A8AA] py-6 text-white text-center opacity-80 text-3xl rounded-xl mt-2"><strong>Games Borrowed from Others</strong></h2>
-  <div class="container mt-5 mb-5">
-    <div class="grid grid-cols-4 gap-30 mt-20">
+  <h2 class="w-full bg-[#05A8AA] py-3 text-white text-center opacity-80 text-3xl mt-2"><strong>Games Borrowed from Others</strong></h2>
+  <div class="container mt-2 mb-5">
+    <div class="grid grid-cols-4 gap-10 mt-5">
       <%@bookings.each do |booking|%>
       <div class="card bg-base-200 hover:bg-base-300 w-70 h-100 border border-[#DC602E] hover:border-[#05A8AA] shadow-sm">
           <figure class="px-3 pt-3"> <%= image_tag(booking.offer.game.artwork_url, class: "rounded-lg", width: 75, height: 40, crop: :fill) %> </figure>
           <div class="card-body flex justify-around">
           <div class="content-center">
             <h2 class="card-title text-ss text-[#DC602E] truncate"><strong><%= booking.offer.game.title%></strong></h2>
-            <p class="text-[#05A8AA]">Owner: <%= booking.offer.user.first_name %> <%= booking.user.last_name %></li>
+            <p class="text-[#05A8AA]">Owner: <%= booking.offer.user.first_name %> <%= booking.offer.user.last_name %></li>
             <p class="text-[#05A8AA]">Status:<%= booking.status %></p>
             </div>
             <%= form_with url: "/edit-booking-dates", method: :patch do |f| %>
+            <div class="flex flex-col">
             <%= f.date_field :start_date, value: booking.start_date %>
             <%= f.date_field :end_date, value: booking.end_date %>
             <input type="hidden" name="id" value="<%=booking.id %>">
-            <%= f.submit %>
+            <%= f.submit "Sauver", class: "btn btn-warning"%>
+            </div>
             <% end %>
             </div>
         </div>
