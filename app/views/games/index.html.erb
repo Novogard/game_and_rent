@@ -1,6 +1,6 @@
 <div class="container">
   <div class="flex flex-row">
-  <%= render "games/sidebar" %>
+  <%= render "games/sidebar", platforms: @platforms, genres: @genres %>
     <div class="grid grid-cols-3 gap-5 m-15">
       <% @games.each do |game| %>
         <% unless game.offers.empty? %>
