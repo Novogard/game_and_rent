@@ -1,7 +1,18 @@
 <div class="container m-10">
-  <div class="flex flex-row">
-    <%= render "games/sidebar", platforms: @platforms, genres: @genres %>
-  <div class="grid grid-cols-3 gap-6 m-25" id="results">
+  <div class="flex flex-row m-20 gap-10">
+  <div class="flex flex-col relative">
+    <div class="sticky top-10">
+      <%= form_with url: games_path, method: :get, class: "flex flex-row m-2" do %>
+        <%= text_field_tag :query,
+              params[:query],
+              class: "form-control px-4 py-2 border border-gray-300 rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500",
+              placeholder: "Search for a game to rent"%>
+        <%= submit_tag "Search", name: "", class: "btn btn-warning border border-[#DC602E] ml-2" %>
+      <% end %>
+      <%= render "games/sidebar", platforms: @platforms, genres: @genres %>
+    </div>
+  </div>
+  <div class="grid grid-cols-3 gap-10" id="results">
     <%= render "games/games", games: @games %>
   </div>
   </div>
