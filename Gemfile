@@ -48,7 +48,7 @@ gem "bootsnap", require: false
 gem "autoprefixer-rails"
 gem "font-awesome-sass", "~> 6.1"
 gem "simple_form", github: "heartcombo/simple_form"
-gem "sassc-rails"
+gem "sass-rails", "~> 6"
 gem "devise"
 gem "faraday"
 gem "faker"
@@ -88,4 +88,3 @@ gem "tailwindcss-ruby", "~> 4.1"
 
 gem "tailwindcss-rails", "~> 4.2"
 
-gem "pg_search"
