@@ -11,25 +11,85 @@
 
 </div>
 
-  <div class="grid grid-cols-4 gap-30 m-15">
-    <% @games.each do |game| %>
-      <% unless game.offers.empty? %>
-        <div class="card bg-base-200 hover:bg-base-300 w-70 h-100 border border-[#DC602E] hover:border-[#05A8AA] shadow-sm">
-        <%= link_to game_path(game) do %>
-          <figure class="px-3 pt-3 ">
-            <%= image_tag(game.artwork_url, class: "rounded-lg",
-              width: 150, height: 80, crop: :fill) %>
-          </figure>
-          <div class="card-body flex justify-around ">
-            <div class="content-center">
-              <h2 class="card-title text-ss text-[#DC602E] truncate"><%= game.title %></h2>
-              <p class="font-bold text-xs text-[#05A8AA] mt-3"><%= game.platform %></p>
-              <p class="btn btn-warning w-60 mt-2">Réserver</p>
+  <%= link_to "Tous nos jeux", games_path, class:"btn btn-warning mt-2" %>
+
+
+<div class="flex place-content-evenly">
+  <div class="flex justify-center mt-8">
+  <div class="w-130 bg-[#DC602E] py-6 text-white text-center opacity-80 text-3xl rounded-xl mt-2 mb-2">
+    Check out this month's top games!
+  <div class="carousel w-[320px] h-110 mt-5">
+    <%= @top_games.each_with_index do |game, index| %>
+      <div id="slide<%= index + 1 %>" class="carousel-item relative">
+        <div class="card bg-base-200 hover:bg-base-300 w-[320px] h-100 border border-[#DC602E] hover:border-[#05A8AA] shadow-sm">
+          <%= link_to game_path(game) do %>
+            <figure class="px-3 pt-3 ">
+              <%= image_tag(game.artwork_url, class: "rounded-lg", width: 150, height: 80, crop: :fill) %>
+            </figure>
+            <div class="card-body flex justify-around ">
+              <div class="content-center">
+                <h2 class="card-title text-ss text-[#DC602E] truncate"><%= game.title %></h2>
+                <p class="font-bold text-xs text-[#05A8AA] mt-3"><%= game.platform %></p>
+                <p class="btn btn-warning w-60 mt-2">Réserver</p>
+
               <% end %>
               </div>
+            </div>
+          </div>
+          <div class="absolute inset-y-1/2 left-0 right-0 flex justify-between items-center px-2 -translate-y-1/2">
+            <% if index > 0 %>
+              <a href="#slide<%= index %>" class="btn btn-circle">❮</a>
+            <% else %>
+              <span></span>
+            <% end %>
+            <% if index < @top_games.size - 1 %>
+              <a href="#slide<%= index + 2 %>" class="btn btn-circle">❯</a>
+            <% else %>
+              <span></span>
+            <% end %>
           </div>
         </div>
-      <% end %>
     <% end %>
   </div>
+  </div>
+</div>
+
+  <div class="flex justify-center mt-8">
+  <div class="w-130 bg-[#DC602E] py-6 text-white text-center opacity-80 text-3xl rounded-xl mt-2 mb-2 flex flex-col justify-center">
+    Newest offers!
+  <div class="carousel w-[320px] h-110 mt-5 m-auto">
+    <%= @new_games.each_with_index do |game, index| %>
+      <div id="aslide<%= index + 1 %>" class="carousel-item relative">
+        <div class="card bg-base-200 hover:bg-base-300 w-[320px] h-100 border border-[#DC602E] hover:border-[#05A8AA] shadow-sm">
+          <%= link_to game_path(game) do %>
+            <figure class="px-3 pt-3 ">
+              <%= image_tag(game.artwork_url, class: "rounded-lg", width: 150, height: 80, crop: :fill) %>
+            </figure>
+            <div class="card-body flex justify-around ">
+              <div class="content-center">
+                <h2 class="card-title text-ss text-[#DC602E] truncate"><%= game.title %></h2>
+                <p class="font-bold text-xs text-[#05A8AA] mt-3"><%= game.platform %></p>
+                <p class="btn btn-warning w-60 mt-2">Réserver</p>
+              <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="absolute inset-y-1/2 left-0 right-0 flex justify-between items-center px-2 -translate-y-1/2">
+            <% if index > 0 %>
+              <a href="#aslide<%= index %>" class="btn btn-circle">❮</a>
+            <% else %>
+              <span></span>
+            <% end %>
+            <% if index < @new_games.size - 1 %>
+              <a href="#aslide<%= index + 2 %>" class="btn btn-circle">❯</a>
+            <% else %>
+              <span></span>
+            <% end %>
+          </div>
+        </div>
+    <% end %>
+  </div>
+  </div>
+  </div>
+</div>
 </div>

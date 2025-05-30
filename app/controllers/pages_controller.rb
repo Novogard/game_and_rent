@@ -3,6 +3,8 @@ class PagesController < ApplicationController
 
   def home
     @games = Game.all
+    @top_games = Game.joins(:offers).distinct.first(5)
+    @new_games = Game.joins(:offers).distinct.last(5)
   end
 
   def dashboard
