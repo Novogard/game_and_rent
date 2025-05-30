@@ -9,13 +9,14 @@ Rails.application.routes.draw do
 
   patch "/bookings/:id/approve", to: "bookings#approve", as: "approve_booking"
   patch "/bookings/:id/reject", to: "bookings#reject", as: "reject_booking"
-
+  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   # get "up" => "rails/health#show", as: :rails_health_check
   # Defines the root path route ("/")
   root to: "pages#home"
-  resources :games
-
+  resources :games do
+    get "autocomplete", on: :collection
+  end
 end
