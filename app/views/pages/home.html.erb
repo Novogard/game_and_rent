@@ -9,7 +9,8 @@
     </div>
   </div>
 </div>
-  <div class="grid grid-cols-4 gap-30 mt-20">
+  <%= link_to "Tous nos jeux", games_path, class:"btn btn-warning mt-2" %>
+  <div class="grid grid-cols-4 gap-30 m-15">
     <% @games.each do |game| %>
       <% unless game.offers.empty? %>
         <div class="card bg-base-200 hover:bg-base-300 w-70 h-100 border border-[#DC602E] hover:border-[#05A8AA] shadow-sm">
