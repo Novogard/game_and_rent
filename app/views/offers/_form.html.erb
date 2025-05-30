@@ -32,7 +32,10 @@
 
       <!-- Colonne droite -->
       <div class="flex-1 space-y-4">
-        <%= f.input :photo, as: :file, input_html: { class: "input input-warning w-full" } %>
+        <div id="selected-game-preview"  >
+        <!-- Image du jeu sélectionné sera affichée ici -->
+        </div>
+        <%# <%= f.input :photo, as: :file, input_html: { class: "input input-warning w-full" } %>
         <%= f.input :rate_per_day, input_html: {  min: 1, class: "input input-warning w-full" } %>
 
       </div>
