@@ -1,23 +1,23 @@
 <div class="flex flex-col text-black">
   <form id="filters-list" data-controller="filters" data-filters-url-value="<%= filter_games_path %>">
-    <div class="collapse collapse-arrow bg-base-100 border border-base-300">
+    <div class="collapse collapse-arrow bg-[#FFE0A2] border border-[#DC602E]">
       <input type="checkbox" />
-      <div class="collapse-title font-semibold">Platforms</div>
+      <div class="collapse-title font-semibold text-[#DC602E]">Platforms</div>
       <div class="collapse-content text-sm">
         <ul>
           <% platforms.sort.each do |platform| %>
-            <li><input type="checkbox" class="checkbox platform-checkbox" name="platforms[]" value="<%= platform %>" data-action="change->filters#filter" /> <%= platform %> </li>
+            <li class="text-[#DC602E]"><input type="checkbox" class="checkbox platform-checkbox" name="platforms[]" value="<%= platform %>" data-action="change->filters#filter" /> <%= platform %> </li>
           <% end %>
         </ul>
       </div>
     </div>
-    <div class="collapse collapse-arrow bg-base-100 border border-base-300">
+    <div class="collapse collapse-arrow bg-[#FFE0A2] border border-[#DC602E]">
       <input type="checkbox" />
-      <div class="collapse-title font-semibold">Genres</div>
+      <div class="collapse-title font-semibold text-[#DC602E]">Genres</div>
       <div class="collapse-content text-sm">
         <ul>
           <% genres.sort.each do |genre| %>
-            <li><input type="checkbox" class="checkbox genre-checkbox" name="genres[]" value="<%= genre %>"  data-action="change->filters#filter" /> <%= genre %> </li>
+            <li class="text-[#DC602E]"><input type="checkbox" class="checkbox genre-checkbox" name="genres[]" value="<%= genre %>"  data-action="change->filters#filter" /> <%= genre %> </li>
           <% end %>
         </ul>
       </div>
