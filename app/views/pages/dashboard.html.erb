@@ -13,7 +13,7 @@
         <%@offers.each do |offer|%>
         <div class="card bg-base-200 w-85 border border-[#DC602E] shadow-sm h-[700px]">
           <figure class="px-10 pt-10 mt-5">
-          <%= image_tag(offer.game.artwork_url,
+          <%= image_tag(offer.game.artwork_url, class: "rounded-lg",
           width: 400, height: 300, crop: :fill) %>
           </figure>
           <div class="card-body items-center text-center h-[420px]">
@@ -43,7 +43,7 @@
       <%@bookings.each do |booking|%>
       <div class="card bg-base-200 w-85 border border-[#DC602E] shadow-sm h-[700px]">
         <figure class="px-10 pt-10 mt-5">
-        <%= image_tag(booking.offer.game.artwork_url,
+        <%= image_tag(booking.offer.game.artwork_url, class: "rounded-lg",
         width: 400, height: 300, crop: :fill) %>
         </figure>
           <div class="card-body items-center text-center h-[420px]">
@@ -86,7 +86,7 @@
     <div class="grid grid-cols-3 gap-27">
       <%@bookings.each do |booking|%>
       <div class="card bg-base-200 w-85 border border-[#DC602E] shadow-sm h-[700px]">
-          <figure class="px-10 pt-10 mt-5"> <%= image_tag(booking.offer.game.artwork_url, width: 400, height: 300, crop: :fill) %> </figure>
+          <figure class="px-10 pt-10 mt-5"> <%= image_tag(booking.offer.game.artwork_url, class: "rounded-lg", width: 400, height: 300, crop: :fill) %> </figure>
           <div class="card-body items-center text-center h-[420px]">
             <h2 class="card-title text-[#DC602E]"><strong><%= booking.offer.game.title%></strong></h2>
             <p class="text-[#05A8AA]">Renter: <%= booking.user.first_name %> <%= booking.user.last_name %></li>

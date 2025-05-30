@@ -2,9 +2,9 @@
 <div class="hero bg-[#05A8AA] h-100">
   <div class="hero-content text-center">
     <div class="max-w-md">
-      <h1 class="text-5xl text-[#DC602E] font-bold">Game & Rent</h1>
+      <h1 class="text-5xl text-[#DC602E] font-bold">Games & Rent</h1>
       <p class="py-6 text-white">
-        Jouer aux jeux vidéo n'a jamais été aussi facile !
+        Jouer aux jeux vidéos n'a jamais été aussi facile !
       </p>
     </div>
   </div>
@@ -12,17 +12,19 @@
   <div class="grid grid-cols-4 gap-30 mt-20">
     <% @games.each do |game| %>
       <% unless game.offers.empty? %>
-        <div class="card bg-base-200 w-70 border border-[#DC602E] shadow-sm h-[500px] max-w-md">
+        <div class="card bg-base-200 hover:bg-base-300 w-70 h-100 border border-[#DC602E] hover:border-[#05A8AA] shadow-sm">
         <%= link_to game_path(game) do %>
-          <figure class="px-10 pt-10 mt-5">
-            <%= image_tag(game.artwork_url,
+          <figure class="px-3 pt-3 ">
+            <%= image_tag(game.artwork_url, class: "rounded-lg",
               width: 150, height: 80, crop: :fill) %>
           </figure>
-          <div class="card-body items-center text-center h-[400px]">
-            <h2 class="card-title text-ss text-[#DC602E]"><%= game.title %></h2>
-            <p class="font-bold text-xs text-[#DC602E] mb-3"><%= game.platform %></p>
-              <p class="btn btn-warning">Réserver</p>
-            <% end %>
+          <div class="card-body flex justify-around ">
+            <div class="content-center">
+              <h2 class="card-title text-ss text-[#DC602E]"><%= game.title %></h2>
+              <p class="font-bold text-xs text-[#05A8AA] mt-3"><%= game.platform %></p>
+              <p class="btn btn-warning w-60 mt-2">Réserver</p>
+              <% end %>
+              </div>
           </div>
         </div>
       <% end %>
