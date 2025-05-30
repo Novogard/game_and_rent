@@ -11,7 +11,7 @@
 
       <div class="grid grid-cols-4 gap-30 mt-20">
         <%@offers.each do |offer|%>
-        <div class="card bg-base-200 hover:bg-base-300 w-70 h-100 border border-[#DC602E] hover:border-[#05A8AA] shadow-sm">
+        <div class="card bg-white hover:bg-base-300 w-70 h-100 border border-[#DC602E] hover:border-[#05A8AA] shadow-sm">
           <div class="card-actions m-1">
             <%= link_to offer_path(offer),
             data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do%>
