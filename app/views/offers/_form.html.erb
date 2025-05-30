@@ -9,16 +9,15 @@
 
       <!-- Colonne gauche -->
       <div class="flex-1 space-y-4">
-
+          <label for="">Game</label>
           <input type="text"
                  data-action="keyup->autocomplete-game#search"
                  data-autocomplete-game-target="input"
                  placeholder="Rechercher un jeu"
                  class="input input-warning w-full">
 
-        <div data-autocomplete-game-target = "results"></div>
-        <input type="text" id="selected-game" , class="border p-2 rounded w-full mt-4" placeholder="Titre sélectionné..." readonly>
-
+        <div data-autocomplete-game-target="results" ></div>
+        <input type="text" id="selected-game" class="border p-2 rounded w-full mt-4" style="color: green; font-weight: bold;" placeholder="Titre sélectionné..." readonly>
 
         <%# <%= f.input :game, collection: Game.all, input_html: { class: "input input-warning w-full" } %>
         <%# <%= f.association :game, input_html: { class: "input input-warning w-full" } %>
@@ -28,26 +27,23 @@
 
         <%# <%= f.input :condition, input_html: { class: "input input-warning w-full" } %>
         <%= f.input :condition, collection: ['Bad', 'OK', 'Good', 'Mint'], prompt: 'Choisissez une condition' , input_html: { class: "input input-warning w-full" } %>
+        <%= f.input :rate_per_day, input_html: {  min: 1, class: "input input-warning w-full" } %>
+            <!-- Description -->
+        <%= f.input :description, input_html: { class: "input input-warning w-full w-full h-38" } %>
+        <!-- Boutons -->
+        <div class="flex justify-end gap-4 mt-8">
+          <%= f.submit "Valider", class: "btn btn-primary" %>
+          <%= link_to "Annuler", dashboard_path, class: "btn btn-secondary" %>
+        </div>
       </div>
 
       <!-- Colonne droite -->
       <div class="flex-1 space-y-4">
-        <%= f.input :photo, as: :file, input_html: { class: "input input-warning w-full" } %>
-        <%= f.input :rate_per_day, input_html: {  min: 1, class: "input input-warning w-full" } %>
+        <div id="selected-game-preview"><!-- Image du jeu sélectionné sera affichée ici --></div>
 
+        <%# <%= f.input :photo, as: :file, input_html: { class: "input input-warning w-full" } %>
       </div>
 
-    </div>
-
-    <!-- Description -->
-    <div class="mt-6">
-      <%= f.input :description, input_html: { class: "input input-warning w-full w-full h-38" } %>
-    </div>
-
-    <!-- Boutons -->
-    <div class="flex justify-end gap-4 mt-8">
-      <%= f.submit "Valider", class: "btn btn-primary" %>
-      <%= link_to "Annuler", dashboard_path, class: "btn btn-secondary" %>
     </div>
 
   <% end %>
