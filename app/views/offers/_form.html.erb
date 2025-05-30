@@ -1,4 +1,5 @@
-<div class="w-full px-4 md:px-16 py-8">
+<div class="w-full px-4 md:px-16 py-8" data-controller="autocomplete-game" data-autocomplete-game-url-value="<%= autocomplete_games_path	%>">
+
   <%= simple_form_for(offer) do |f| %>
 
     <!-- Deux colonnes -->
@@ -6,16 +7,26 @@
 
       <!-- Colonne gauche -->
       <div class="flex-1 space-y-4">
-        <%= f.association :game, input_html: { class: "input input-warning w-full" } %>
 
+          <input type="text"
+                 data-action="keyup->autocomplete-game#search"
+                 data-autocomplete-game-target="input"
+                 placeholder="Rechercher un jeu"
+                 class="input input-warning w-full">
+
+        <div data-autocomplete-game-target = "results"></div>
+
+        <%= f.association :game, input_html: { class: "input input-warning w-full" } %>
         <%# <%= f.input :game, collection: Game.all, input_html: { class: "input input-warning w-full" } %>
-        <%= f.input :condition, input_html: { class: "input input-warning w-full" } %>
+        <%# <%= f.input :condition, input_html: { class: "input input-warning w-full" } %>
+        <%= f.input :condition, collection: ['Bad', 'OK', 'Good', 'Mint'], prompt: 'Choisissez une condition' , input_html: { class: "input input-warning w-full" } %>
       </div>
 
       <!-- Colonne droite -->
       <div class="flex-1 space-y-4">
         <%= f.input :photo, as: :file, input_html: { class: "input input-warning w-full" } %>
-        <%= f.input :rate_per_day, input_html: { class: "input input-warning w-full" } %>
+        <%= f.input :rate_per_day, input_html: {  min: 1, class: "input input-warning w-full" } %>
+
       </div>
 
     </div>
@@ -28,7 +39,7 @@
     <!-- Boutons -->
     <div class="flex justify-end gap-4 mt-8">
       <%= f.submit "Valider", class: "btn btn-primary" %>
-      <%= link_to "Annuler", offers_path, class: "btn btn-secondary" %>
+      <%= link_to "Annuler", dashboard_path, class: "btn btn-secondary" %>
     </div>
 
   <% end %>
@@ -41,13 +52,3 @@
     <% end %>
   </ul>
 <% end %>
-<%#
-grid grid-cols-1 md:grid-cols-2 : passe à une seule colonne sur mobile.
-
-gap-6 : ajoute de l’espace entre les colonnes et lignes.
-
-w-full : chaque champ prend toute la largeur disponible de sa colonne.
-
-md:col-span-2 pour que la description s’étende sur les deux colonnes en version bureau.
-
-mt-6 ajoute un peu d’espace avant les boutons. %>
